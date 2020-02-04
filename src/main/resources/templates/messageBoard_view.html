@@ -1,0 +1,244 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="navigation">
+
+    <!-- begin::logo -->
+    <div id="logo">
+
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li class="navigation-divider">导航栏</li>
+            <li class="open">
+                <a href="/">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>首页</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/login">
+                    <!--<i class="nav-link-icon" data-feather="message-circle"></i>-->
+                    <span>实验预约</span>
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="mail"></i>-->
+                    <span>成绩评定</span>
+                    <!--<span class="badge badge-success">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>课表查询</span>
+                    <!--<span class="badge badge-warning">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/queryLessonTeacher">
+                    <!--<i class="nav-link-icon" data-feather="file"></i>-->
+                    <span>任课教师</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>留言板</span>
+                </a>
+                <ul>
+                    <li><a href="/queryAnswers">查看留言板</a></li>
+                    <li><a href="/addAnswerLogin">发布留言</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>投诉信箱</span>
+                </a>
+                <ul>
+                    <li><a href="/queryComplaint">查看投诉信箱</a></li>
+                    <li><a href="/addComplaintLoing">发布投诉</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>失物招领</span>
+                </a>
+                <ul>
+                    <li><a href="/queryGoodsLogin">查看失物招领</a></li>
+                    <li><a href="/addGoodsLogin">发布失物招领</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>素材下载</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>实验室简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>选课名单查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span style="color: coral">教师通道</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end::navigation menu -->
+</div>
+<div id="main">
+    <main class="main-content">
+
+        <div class="container">
+            <h2 style="font-size: 17px">这周是第&nbsp;&nbsp;<b th:text="${session.week}" style="color: red;">1</b>&nbsp;&nbsp;周</h2>
+            <div class="page-header mb-5">
+                <h4>查看留言板</h4>
+            </div>
+
+            <div class="row" style="min-height: 590px;">
+                <div class="col-md-10">
+
+                    <div class="card" th:each="answer : ${pageInfo.list}" style="height: 400;">
+                        <div class="card-header">
+                            <span style="float: left;margin-right: 50px;">编号</span>
+                            <span style="float: left">时间</span>
+                            <span style="float: right;">留言给</span>
+                            <span style="float: right;margin-right: 50px;">留言用户</span>
+
+                            <br>
+                            <br>
+                            <span style="float: left;margin-right: 50px;" th:text="${answer.id}">编号</span>
+                            <span style="float: left" th:text="${answer.time}">时间</span>
+                            <span style="float: right;">全体人员</span>
+                            <span style="float: right;margin-right: 50px;" th:text="${answer.message}">留言用户</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-scroll"style="height: 100px">
+                                <p>留言内容</p>
+                                <div th:id="'context'+${answer.id}" th:utext="${answer.context}" ></div>
+                            </div>
+                            <div class="card-scroll" style="height: 120px">
+                                <h6 style="font-size: 14px;">回复</h6>
+                                <p style="font-size: 12px;">回复内容</p>
+                                <div style="height: 20px;width: 400px;" th:text="${answer?.reply?.context}">
+
+                                </div>
+                                <span style="height: 20px;">回复时间</span>
+                                <p th:text="${answer?.reply?.date}"></p>
+                            </div>
+
+                        </div>
+                        <hr/>
+                    </div>
+                    <div align="center" style="padding-top: 100px;">
+                    总共<a th:text="${pageInfo.pages}"/>页|
+                    第<a th:text="${pageInfo.getPageNum()}"/>页|
+                    <a id="button1" th:href="@{${'/queryAnswers'}(pageNum=${pageInfo.firstPage})}">首页</a>|
+                    <a id="button2" th:href="@{${'/queryAnswers'}(pageNum=${pageInfo.prePage})}" >上一页</a>|
+                    <a id="button3" th:href="@{${'/queryAnswers'}(pageNum=${pageInfo.nextPage})}" >下一页</a>|
+                    <a id="button4" th:href="@{${'/queryAnswers'}(pageNum=${pageInfo.lastPage})}" >尾页</a>
+                    <input type="hidden" id="first" th:value="${pageInfo.getPageNum()}"/>
+                    <input type="hidden" id="last" th:value="${pageInfo.pages}"/>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+</div>
+<script type="text/javascript">
+    $(function () {
+        pageNum = document.getElementById('first').value;
+        lastPage = document.getElementById('last').value;
+        if (lastPage == pageNum) {
+            // $('button3').removeAttr('href');//去掉a标签中的href属性
+            // $('button3').removeAttr('onclick');//去掉a标签中的onclick事件
+            document.getElementById('button3').removeAttribute('href');
+            document.getElementById('button3').removeAttribute('onclick');
+        } else {
+            if (pageNum == 1) {
+                document.getElementById('button2').removeAttribute('href');
+                document.getElementById('button2').removeAttribute('onclick');
+                // $('button2').removeAttr('href');//去掉a标签中的href属性
+                // $('button2').removeAttr('onclick');//去掉a标签中的onclick事件
+
+            }
+            // else if (pageNum != 1) {
+            //     $('').attr('', 'href');//添加a标签中的href属性
+            //     $('.f').attr('', 'onclick');//添加a标签中的onclick事件)
+            // }
+            // $('.la').attr('', 'href');//添加a标签中的href属性
+            // $('.la').attr('', 'onclick');//添加a标签中的onclick事件)
+
+        }
+
+        /*if(lastPage==pageNum){
+            $('.l').removeAttr('href');//去掉a标签中的href属性
+            $('.l').removeAttr('onclick');//去掉a标签中的onclick事件
+        }else{
+            $('.l').attr('','href');//添加a标签中的href属性
+            $('.l').attr('','onclick');//添加a标签中的onclick事件)
+        }*/
+    });
+</script>
+<!-- Plugin scripts -->
+<script src="/static/vendors/bundle.js"></script>
+
+<!-- Chartjs -->
+<script src="/static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Circle progress -->
+<script src="/static/vendors/circle-progress/circle-progress.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="/static/assets/js/examples/dashboard.js"></script>
+<div class="colors"> <!-- To use theme colors with Javascript -->
+    <div class="bg-primary"></div>
+    <div class="bg-primary-bright"></div>
+    <div class="bg-secondary"></div>
+    <div class="bg-secondary-bright"></div>
+    <div class="bg-info"></div>
+    <div class="bg-info-bright"></div>
+    <div class="bg-success"></div>
+    <div class="bg-success-bright"></div>
+    <div class="bg-danger"></div>
+    <div class="bg-danger-bright"></div>
+    <div class="bg-warning"></div>
+    <div class="bg-warning-bright"></div>
+</div>
+<!-- App scripts -->
+<script src="/static/assets/js/app.min.js"></script>
+<script>
+
+</script>
+</body>
+</html>

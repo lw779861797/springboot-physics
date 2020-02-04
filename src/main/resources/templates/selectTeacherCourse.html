@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/vendors/dataTable/dataTables.min.css" type="text/css">
+
+    <!-- Javascript -->
+    <script src="/static/vendors/dataTable/jquery.dataTables.min.js"></script>
+
+    <!-- Bootstrap 4 and responsive compatibility -->
+    <script src="/static/vendors/dataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/vendors/dataTable/dataTables.responsive.min.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/vendors/prism/prism.css" type="text/css">
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="navigation">
+
+    <!-- begin::logo -->
+    <div id="logo">
+
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li class="navigation-divider">导航栏</li>
+            <li class="open">
+                <a href="/">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>首页</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/login">
+                    <!--<i class="nav-link-icon" data-feather="message-circle"></i>-->
+                    <span>实验预约</span>
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="mail"></i>-->
+                    <span>成绩评定</span>
+                    <!--<span class="badge badge-success">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>课表查询</span>
+                    <!--<span class="badge badge-warning">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/queryLessonTeacher">
+                    <!--<i class="nav-link-icon" data-feather="file"></i>-->
+                    <span>任课教师</span>
+                </a>
+            </li>
+            <li>
+                <a href="/queryAnswers">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>查看留言板</span>
+                </a>
+            </li>
+            <li>
+                <a href="/addAnswerLogin">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>发布留言</span>
+                </a>
+            </li>
+            <li>
+                <a href="/queryComplaint">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>查看投诉信箱</span>
+                </a>
+            </li>
+            <li>
+                <a href="/addComplaintLoing">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>发布投诉</span>
+                </a>
+            </li>
+            <li>
+                <a href="/queryGoodsLogin">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>查看失物招领</span>
+                </a>
+            </li>
+            <li>
+                <a href="/addGoodsLogin">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>发布失物招领</span>
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>素材下载</span>
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>实验室简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>选课名单查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="/notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span style="color: coral">教师通道</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end::navigation menu -->
+</div>
+<div id="main">
+
+
+
+    <!-- begin::main-content -->
+    <main class="main-content">
+
+        <div class="container">
+
+            <!-- begin::page-header -->
+            <div class="page-header">
+                <h4>Tab</h4>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#">Components</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Tab</li>
+                    </ol>
+                </nav>
+            </div>
+            <!-- end::page-header -->
+
+            <div class="row" style="min-height: 590px;">
+                <div class="col-md-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Basic tab</h6>
+                            <ul class="nav nav-tabs mb-3" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                       aria-controls="home" aria-selected="true">实验预约（空位查询）</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <!--实验预约与空位查询-->
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <table id="myTable" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr style="text-align: center">
+                                            <th>序号</th>
+                                            <th>实验题目</th>
+                                            <th>房间号</th>
+                                            <th>周次</th>
+                                            <th>查询</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="lesson,inStat : ${session.lessons}" style="text-align: center">
+                                            <form th:action="@{'/listTeacherLesson/'+${lesson.id}+'/'+${lesson.name}}" method="post">
+                                                <td th:text="${lesson.id}"></td>
+                                                <td th:text="${lesson.name}"></td>
+                                                <td th:text="${lesson.address}"></td>
+                                                <td th:text="${lesson.time}"></td>
+                                                <td>
+                                                    <input type="submit" class="btn btn-success" value="查询" >
+                                                </td>
+                                            </form>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+<!--<script src="/static/vendors/bundle.js"></script>-->
+<!--<script src="/static/vendors/prism/prism.js"></script>-->
+<!--<script src="/static/assets/js/app.min.js"></script>-->
+<script>
+    $(document).ready(function (){
+        $('#myTable').DataTable({
+            "scrollY": "400px",
+            "scrollCollapse": true
+        });
+    });
+</script>
+</body>
+</html>

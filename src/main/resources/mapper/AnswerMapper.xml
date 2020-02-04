@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.AnswerMapper">
+    <select id="queryPage" resultMap="answers">
+        select * from answer order by answer_id desc
+    </select>
+    <resultMap id="answers" type="com.physics.pojo.Answer">
+        <id column="answer_id" property="id"/>
+        <result column="student_id" property="student_id"/>
+        <!--<result column="answer_title" property="title"/>-->
+        <result column="answer_context" property="context"/>
+        <result column="answer_create_time" property="date"/>
+        <result column="answer_status" property="status"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.physics.pojo.Answer">
+        insert into answer (student_id,answer_context,answer_create_time)
+        values (#{student_id},#{context},#{date});
+    </insert>
+</mapper>

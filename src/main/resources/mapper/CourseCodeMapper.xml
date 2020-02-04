@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.CourseCodeMapper">
+    <insert id="insert" parameterType="com.physics.pojo.CourseCode">
+        insert into coursecode (course_id,student_id,course_code_time,course_name,
+        course_seat,course_weekly) values (#{course_id},#{student_id},#{course_code_time},#{course_name},#{seat},#{course_weekly});
+    </insert>
+    <select id="queryCourseCodeByStudentId" parameterType="int" resultMap="coursecodes">
+        select * from coursecode where student_id = #{student_id};
+    </select>
+    <resultMap id="coursecodes" type="com.physics.pojo.CourseCode">
+        <id column="course_code_id" property="id"/>
+        <result column="course_id" property="course_id"/>
+        <result column="student_id" property="student_id"/>
+        <result column="course_code_time" property="course_code_time"/>
+        <result column="course_name" property="course_name"/>
+        <result column="course_seat" property="seat"/>
+        <result column="course_code_status" property="status"/>
+        <result column="course_weekly" property="course_weekly"/>
+    </resultMap>
+    <delete id="delete" parameterType="int">
+        delete from coursecode where course_code_id = #{coursecode_id}
+    </delete>
+    <update id="updateCourseCode">
+        update coursecode set course_code_status = course_code_status + 1
+        where to_days(course_time) <![CDATA[ <= ]]> to_days(now())
+    </update>
+    <select id="queryCourseCodeByLessonId" resultMap="coursecodes">
+        select * from coursecode where course_name = #{course_name} and student_id = #{student_id}
+    </select>
+    <select id="queryAllSeat" parameterType="int" resultType="int">
+        select course_seat from coursecode where course_id=#{course_id}
+    </select>
+</mapper>

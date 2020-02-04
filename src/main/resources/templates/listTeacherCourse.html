@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/vendors/dataTable/dataTables.min.css" type="text/css">
+
+    <!-- Javascript -->
+    <script src="/static/vendors/dataTable/jquery.dataTables.min.js"></script>
+
+    <!-- Bootstrap 4 and responsive compatibility -->
+    <script src="/static/vendors/dataTable/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/vendors/dataTable/dataTables.responsive.min.js"></script>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+
+    <link rel="stylesheet" href="/static/vendors/prism/prism.css" type="text/css">
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class="navigation">
+
+    <!-- begin::logo -->
+    <div id="logo">
+
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li class="navigation-divider">导航栏</li>
+            <li class="open">
+                <a href="/">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>首页</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/login">
+                    <!--<i class="nav-link-icon" data-feather="message-circle"></i>-->
+                    <span>实验预约</span>
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="mail"></i>-->
+                    <span>成绩评定</span>
+                    <!--<span class="badge badge-success">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>课表查询</span>
+                    <!--<span class="badge badge-warning">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/queryLessonTeacher">
+                    <!--<i class="nav-link-icon" data-feather="file"></i>-->
+                    <span>任课教师</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>留言板</span>
+                </a>
+                <ul>
+                    <li><a href="/queryAnswers">查看留言板</a></li>
+                    <li><a href="/addAnswerLogin">发布留言</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>投诉信箱</span>
+                </a>
+                <ul>
+                    <li><a href="/queryComplaint">查看投诉信箱</a></li>
+                    <li><a href="/addComplaintLoing">发布投诉</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>失物招领</span>
+                </a>
+                <ul>
+                    <li><a href="/queryGoodsLogin">查看失物招领</a></li>
+                    <li><a href="/addGoodsLogin">发布失物招领</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>素材下载</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>实验室简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>选课名单查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span style="color: coral">教师通道</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end::navigation menu -->
+</div>
+<div id="main">
+
+
+
+    <!-- begin::main-content -->
+    <main class="main-content">
+
+        <div class="container">
+
+            <!-- begin::page-header -->
+            <div class="page-header">
+                <h4>黑龙江大学</h4>
+                <nav aria-label="breadcrumb">
+                    物理学院普通物理实验室
+                </nav>
+            </div>
+            <!-- end::page-header -->
+
+            <div class="row" style="min-height: 590px;">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 style="font-size: 17px">这周是第&nbsp;&nbsp;<b th:text="${session.week}" style="color: red;">1</b>&nbsp;&nbsp;周</h6>
+                            <ul class="nav nav-tabs mb-3" role="tablist">
+                                <li class="nav-item">
+                                    <b class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                       aria-controls="home" aria-selected="true">任课老师查询</b>
+                                </li>
+                            </ul>
+                        </div>
+                        <h6>实验题目:&nbsp;&nbsp;<b th:text="${lesson_name}"></b></h6>
+                        <div class="col-md-12">
+                            <div class="col-md-6" style="float: left">
+                            <table style="text-align: center;border-collapse: collapse;" cellspacing="1" class="table table-bordered">
+                                <tr>
+                                    <td>节次</td>
+                                    <td>1-4节</td>
+                                </tr>
+                                <tr>
+                                    <td>周次</td>
+                                    <td>周日</td>
+                                    <td>周一</td>
+                                    <td>周二</td>
+                                    <td>周三</td>
+                                    <td>周四</td>
+                                    <td>周五</td>
+                                    <td>周六</td>
+                                </tr>
+                                <tr th:each="listTeacher,inStat : ${#httpServletRequest.getAttribute('listTeachers_front')}">
+                                    <td th:text="${inStat.count+1}"></td>
+                                    <td th:text="${listTeacher.sunday}"></td>
+                                    <td th:text="${listTeacher.monday}"></td>
+                                    <td th:text="${listTeacher.tuesday}"></td>
+                                    <td th:text="${listTeacher.wednesday}"></td>
+                                    <td th:text="${listTeacher.thursday}"></td>
+                                    <td th:text="${listTeacher.friday}"></td>
+                                    <td th:text="${listTeacher.saturday}"></td>
+                                </tr>
+                            </table>
+                        </div>
+                            <div class="col-md-6" style="float: left">
+                                <table style="text-align: center;border-collapse: collapse;" cellspacing="1" class="table table-bordered">
+                                <tr>
+                                    <td>节次</td>
+                                    <td>5-8节</td>
+                                </tr>
+                                <tr>
+                                    <td>周次</td>
+                                    <td>周日</td>
+                                    <td>周一</td>
+                                    <td>周二</td>
+                                    <td>周三</td>
+                                    <td>周四</td>
+                                    <td>周五</td>
+                                    <td>周六</td>
+                                </tr>
+                                <tr th:each="listTeacher,inStat : ${#httpServletRequest.getAttribute('listTeachers_last')}">
+                                    <td th:text="${inStat.count+1}"></td>
+                                    <td th:text="${listTeacher.sunday}"></td>
+                                    <td th:text="${listTeacher.monday}"></td>
+                                    <td th:text="${listTeacher.tuesday}"></td>
+                                    <td th:text="${listTeacher.wednesday}"></td>
+                                    <td th:text="${listTeacher.thursday}"></td>
+                                    <td th:text="${listTeacher.friday}"></td>
+                                    <td th:text="${listTeacher.saturday}"></td>
+                                </tr>
+                            </table>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+<script src="/static/vendors/bundle.js"></script>
+<script src="/static/vendors/prism/prism.js"></script>
+<script src="/static/assets/js/app.min.js"></script>
+<script>
+    $(document).ready(function (){
+        $('#myTable').DataTable({
+            "scrollY": "400px",
+            "scrollCollapse": true
+        });
+    });
+</script>
+</body>
+</html>

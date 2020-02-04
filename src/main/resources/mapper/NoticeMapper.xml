@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.NoticeMapper">
+    <select id="queryByAll" resultMap="notices">
+        select * from notice order by notice_id desc ;
+    </select>
+    <resultMap id="notices" type="com.physics.pojo.Notice">
+        <id column="notice_id" property="id"/>
+        <result column="teacher_id" property="teacher_id"/>
+        <result column="notice_create_time" property="date"/>
+        <result column="notice_context" property="context"/>
+    </resultMap>
+</mapper>

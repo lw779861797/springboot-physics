@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.CodeMapper">
+    <select id="queryAll" resultMap="codes">
+        select * from code;
+    </select>
+    <resultMap id="codes" type="com.physics.pojo.Code">
+        <id column="code_id" property="id"/>
+        <result column="code_context" property="context"/>
+    </resultMap>
+</mapper>

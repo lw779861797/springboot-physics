@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.ReplyMapper">
+    <select id="queryReplyById" parameterType="int" resultMap="replys">
+        select * from reply where answer_id = #{answer_id}
+    </select>
+    <resultMap id="replys" type="com.physics.pojo.Reply">
+        <id column="reply_id" property="id"/>
+        <result column="reply_context" property="context"/>
+        <result column="reply_create_time" property="time"/>
+        <result column="teacher_id" property="teacher_id"/>
+        <result column="answer_id" property="answer_id"/>
+    </resultMap>
+</mapper>

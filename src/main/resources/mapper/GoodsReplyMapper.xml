@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.GoodsReplyMapper">
+    <select id="queryGoodsReplyById" parameterType="int" resultMap="reply">
+        select * from goodsreply where goodsreply.goods_id = #{goods_id}
+    </select>
+    <insert id="insert" parameterType="com.physics.pojo.GoodsReply">
+        insert into goodsreply (goods_reply_context,goods_id,goods_reply_admin_id,goods_reply_date,admin_message)
+         values (#{context},#{goods_id},#{admin_id},#{date},#{admin_message});
+    </insert>
+    <resultMap id="reply" type="com.physics.pojo.GoodsReply">
+        <id column="goods_reply_id" property="id"/>
+        <result column="goods_id" property="goods_id"/>
+        <result column="goods_reply_date" property="date"/>
+        <result column="goods_reply_context" property="context"/>
+        <result column="goods_reply_admin_id" property="admin_id"/>
+        <result column="admin_message" property="admin_message"/>
+    </resultMap>
+</mapper>

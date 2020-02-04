@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.GoodsMapper">
+    <select id="queryGoods" resultMap="goods">
+        select goods.*
+         from goods order by goods_id desc
+    </select>
+    <resultMap id="goods" type="com.physics.pojo.Goods">
+        <id column="goods_id" property="id"/>
+        <result column="goods_admin_message" property="admin_message"/>
+        <result column="admin_id" property="admin_id"/>
+        <result column="goods_title" property="title"/>
+        <result column="goods_context" property="context"/>
+        <result column="goods_create_time" property="date"/>
+        <result column="goods_status" property="status"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.physics.pojo.Goods">
+        insert into goods (admin_id,goods_create_time,goods_title,goods_context,goods_status,goods_admin_message)
+         values (#{admin_id},#{date},#{title},#{context},#{status},#{admin_message});
+    </insert>
+    <select id="queryGoodsByGoodId" parameterType="int" resultMap="goods">
+        select * from goods where goods_id=#{goods_id};
+    </select>
+</mapper>

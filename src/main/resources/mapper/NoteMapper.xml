@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.NoteMapper">
+    <select id="queryAll" resultMap="notes">
+        select * from note;
+    </select>
+    <resultMap id="notes" type="com.physics.pojo.Note">
+        <id column="note_id" property="id"/>
+        <result column="note_context" property="context"/>
+    </resultMap>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.CourseMapper">
+    <select id="queryAll" resultMap="courses">
+        select * from course where course_status = 0 and course_number != course_selected and
+          to_days(course_time) > to_days(now())
+    </select>
+    <select id="queryByIdAndSoOn" resultMap="courses">
+        select * from course where
+        course_status = 0 and lesson_id=#{lesson_id} and
+        course_week = #{lesson_weekly} and
+        course_weekday = #{lesson_week_day} and
+        course_section = #{lesson_week_day_section}
+    </select>
+    <resultMap id="courses" type="com.physics.pojo.Course">
+        <id column="course_id" property="id"/>
+        <result column="course_name" property="name"/>
+        <result column="course_number" property="number"/>
+        <result column="course_selected" property="selected"/>
+        <result column="course_address" property="address"/>
+        <result column="course_teacher" property="teacher_id"/>
+        <result column="course_weekly_time" property="weekly_time"/>
+        <result column="course_week" property="week"/>
+        <result column="course_weekday" property="week_day"/>
+        <result column="course_section" property="week_day_section"/>
+        <result column="course_time" property="date"/>
+        <result column="course_status" property="status"/>
+        <result column="lesson_id" property="lesson_id"/>
+    </resultMap>
+    <select id="queryAddressByCourseId" parameterType="int" resultType="String">
+        select course_address from course where course_id = #{course_id}
+    </select>
+    <update id="updateCourseIntoSql" >
+        update course set selected = #{selected} where course_id = #{course_id};
+    </update>
+    <select id="queryCourseByLessonId" resultMap="courses">
+        select * from course where lesson_id = #{lesson_id} and
+        course_section = #{course_section} order by (course_week + 0) asc
+    </select>
+</mapper>

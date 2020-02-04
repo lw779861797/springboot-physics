@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+</head>
+<body>
+<div class="navigation">
+
+    <!-- begin::logo -->
+    <div id="logo">
+
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li class="navigation-divider">导航栏</li>
+            <li class="open">
+                <a href="/">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>首页</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/login">
+                    <!--<i class="nav-link-icon" data-feather="message-circle"></i>-->
+                    <span>实验预约</span>
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="mail"></i>-->
+                    <span>成绩评定</span>
+                    <!--<span class="badge badge-success">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>课表查询</span>
+                    <!--<span class="badge badge-warning">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/queryLessonTeacher">
+                    <!--<i class="nav-link-icon" data-feather="file"></i>-->
+                    <span>任课教师</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>留言板</span>
+                </a>
+                <ul>
+                    <li><a href="/queryAnswers">查看留言板</a></li>
+                    <li><a href="/addAnswerLogin">发布留言</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>投诉信箱</span>
+                </a>
+                <ul>
+                    <li><a href="/queryComplaint">查看投诉信箱</a></li>
+                    <li><a href="/addComplaintLoing">发布投诉</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>失物招领</span>
+                </a>
+                <ul>
+                    <li><a href="/queryGoodsLogin">查看失物招领</a></li>
+                    <li><a href="/addGoodsLogin">发布失物招领</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>素材下载</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>实验室简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>选课名单查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span style="color: coral">教师通道</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end::navigation menu -->
+</div>
+
+<div id="main">
+
+    <!-- begin::header -->
+    <!---->
+    <!-- end::header -->
+
+    <!-- begin::main content -->
+    <main class="main-content">
+
+        <div class="container">
+
+            <div class="page-header mb-5">
+                <h4>发布投诉</h4>
+                <!--<small class="">Welcome, <span class="text-primary">Kenneth Hune</span></small>-->
+            </div>
+
+            <div class="row" style="min-height: 590px;">
+
+                <div class="col-md-8">
+
+                    <div class="card">
+                        <div class="card-body p-50">
+                            <form action="/addComplaint" method="post">
+                                <div class="form-group">
+                                    <label for="originalpassword">标题</label>
+                                    <input type="text"  name="complaint_title"  class="form-control" id="originalpassword"
+                                           aria-describedby="emailHelp" placeholder="事件主要内容">
+                                </div>
+                                <div class="form-group">
+                                    <label for="goods_context">信息内容</label>
+                                    <textarea class="form-control" name="complaint_context" id="goods_context" rows="3" style="resize:none; height: 300px"></textarea>
+                                </div>
+                                <input type="submit" class="btn btn-primary" style="margin-left: 40%" value="发布信息">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Plugin scripts -->
+<script src="/static/vendors/bundle.js"></script>
+
+<!-- Chartjs -->
+<script src="/static/vendors/charts/chartjs/chart.min.js"></script>
+
+<!-- Circle progress -->
+<script src="/static/vendors/circle-progress/circle-progress.min.js"></script>
+
+<!-- Dashboard scripts -->
+<script src="/static/assets/js/examples/dashboard.js"></script>
+<div class="colors"> <!-- To use theme colors with Javascript -->
+    <div class="bg-primary"></div>
+    <div class="bg-primary-bright"></div>
+    <div class="bg-secondary"></div>
+    <div class="bg-secondary-bright"></div>
+    <div class="bg-info"></div>
+    <div class="bg-info-bright"></div>
+    <div class="bg-success"></div>
+    <div class="bg-success-bright"></div>
+    <div class="bg-danger"></div>
+    <div class="bg-danger-bright"></div>
+    <div class="bg-warning"></div>
+    <div class="bg-warning-bright"></div>
+</div>
+
+<!-- App scripts -->
+<script src="/static/assets/js/app.min.js"></script>
+</body>
+</html>

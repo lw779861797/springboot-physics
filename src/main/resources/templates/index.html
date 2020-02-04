@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+
+    <!-- Prism -->
+    <link rel="stylesheet" href="/static/vendors/prism/prism.css" type="text/css">
+
+    <!-- App styles -->
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+</head>
+<body>
+<div class="navigation">
+
+    <!-- begin::logo -->
+    <div id="logo">
+
+    </div>
+    <div class="navigation-menu-body">
+        <ul>
+            <li class="navigation-divider">导航栏</li>
+            <li class="open">
+                <a href="/">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>首页</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="/login">
+                    <!--<i class="nav-link-icon" data-feather="message-circle"></i>-->
+                    <span>实验预约</span>
+                    <!--<span class="badge badge-danger">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="mail"></i>-->
+                    <span>成绩评定</span>
+                    <!--<span class="badge badge-success">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>课表查询</span>
+                    <!--<span class="badge badge-warning">2</span>-->
+                </a>
+            </li>
+            <li>
+                <a href="/queryLessonTeacher">
+                    <!--<i class="nav-link-icon" data-feather="file"></i>-->
+                    <span>任课教师</span>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>留言板</span>
+                </a>
+                <ul>
+                    <li><a href="/queryAnswers">查看留言板</a></li>
+                    <li><a href="/addAnswerLogin">发布留言</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>投诉信箱</span>
+                </a>
+                <ul>
+                    <li><a href="/queryComplaint">查看投诉信箱</a></li>
+                    <li><a href="/addComplaintLoing">发布投诉</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="">
+                    <!--<i class="nav-link-icon" data-feather="calendar"></i>-->
+                    <span>失物招领</span>
+                </a>
+                <ul>
+                    <li><a href="/queryGoodsLogin">查看失物招领</a></li>
+                    <li><a href="/addGoodsLogin">发布失物招领</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>素材下载</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>实验室简介</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span>选课名单查询</span>
+                </a>
+            </li>
+            <li>
+                <a href="notgo">
+                    <!--<i class="nav-link-icon" data-feather="check-circle"></i>-->
+                    <span style="color: coral">教师通道</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- end::navigation menu -->
+</div>
+<div id="main">
+
+
+
+    <!-- begin::main-content -->
+    <main class="main-content">
+
+        <div class="container">
+
+            <!-- begin::page-header -->
+            <div class="page-header">
+                <h4>黑龙江大学</h4>
+                <nav aria-label="breadcrumb">
+                    物理学院普通物理实验室
+                </nav>
+            </div>
+            <!-- end::page-header -->
+
+            <div class="card">
+                <div class="card-body">
+                    <h1 style="font-size: 20px;">首页</h1>
+                    <h6 style="color: red">-index-</h6>
+                    <h2 style="font-size: 17px">这周是第&nbsp;&nbsp;<b th:text="${session.week}" style="color: red;">1</b>&nbsp;&nbsp;周</h2>
+                    <div class="accordion" id="accordionExample">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                                        aria-expanded="true" aria-controls="collapseOne">
+                                    通知、注意事项
+                                </button>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <h6 style="font-size: 20px;color: red">通知:</h6>
+                                    <div th:each="notice,inStat : ${session.notices}" style="margin-left: 20px;width: 800px;">
+                                        <p th:text="${notice.context}">暂无数据</p>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <h6 style="font-size: 20px;color: red">实验预约注意事项:</h6>
+                                    <div th:each="note,inStat : ${session.notes}" style="margin-left: 20px;width: 500px;">
+                                        <p th:text="${note.context}">暂无数据</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    实验室守则
+                                </button>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                 data-parent="#accordionExample">
+                                <div class="card-body" style="margin-left: 20px;width: 600px;">
+                                    <li th:each="code,inStat : ${session.codes}">
+                                        <b th:text="${code.context}">暂无数据</b>
+                                    </li>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingThree">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    实验开放信息
+                                </button>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                 data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <table id="myTable" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr style="text-align: center">
+                                            <th>实验号</th>
+                                            <th>实验题目</th>
+                                            <th>房间号</th>
+                                            <th>开设周次</th>
+                                            <th>备注</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="lesson,inStat : ${session.lessons}" style="text-align: center">
+                                            <td th:text="${lesson.id}">--</td>
+                                            <td th:text="${lesson.name}">--</td>
+                                            <td th:text="${lesson.address}">--</td>
+                                            <td th:text="${lesson.time}">--</td>
+                                            <td th:text="${lesson.remarks}">--</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </main>
+</div>
+<script src="/static/vendors/bundle.js"></script>
+
+<script src="/static/vendors/prism/prism.js"></script>
+
+<script src="/static/assets/js/app.min.js"></script>
+</body>
+</html>

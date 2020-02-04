@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="shortcut icon" href="/static/assets/media/image/favicon.png"/>
+    <link rel="stylesheet" href="/static/vendors/bundle.css" type="text/css">
+    <link rel="stylesheet" href="/static/assets/css/app.min.css" type="text/css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body class="form-membership">
+
+<div class="form-wrapper">
+
+    <h5>登入</h5>
+    <form action="/check" method="post">
+        <div class="form-group">
+            <input id="student_username" name="user_name" type="text" class="form-control" placeholder="请输入学号" required autofocus>
+        </div>
+        <div class="form-group">
+            <input id="student_password" name="pass_word" type="password" class="form-control" placeholder="请输入密码" required>
+        </div>
+        <button class="btn btn-primary btn-block">登入</button>
+        <input name="flag" type="hidden" th:value="${#httpServletRequest.getAttribute('flag')}">
+    </form>
+</div>
+<script type="text/javascript" src="/static/jquery.js"></script>
+<script>
+    // function login() {
+    //      var student_username=document.getElementById('student_username').value;
+    //     var student_password=document.getElementById('student_password').value;
+    //     if(!(/^\d+$/.test(student_username))){
+    //         alert("学号为6位的数字组成");
+    //         window.location.reload(true);
+    //         return;
+    //     }
+    //     if(student_password.length != 6 || !(/^\d+$/.test(student_password))){
+    //         alert("密码为6位的数字组成");
+    //          location.reload(true);
+    //          return;
+    //     }
+    //     // $.post(
+    //     //     "/check",
+    //     //     {"user_name":student_username,"pass_word":student_password},
+    //     //     function (result) {
+    //     //         console.log("asdafa");
+    //     //         // return result;
+    //     //
+    //     //     }
+    //     // )
+    //     $.ajax({
+    //         url : '/check',
+    //         type : "post",
+    //         dataType: "json",
+    //         data : {"user_name":student_username,"pass_word":student_password},
+    //         async:false,
+    //         success : function(fak) {
+    //             if (fak == "1") {
+    //                 // alert(1);
+    //                 window.location.href = "/c";
+    //                 window.event.returnValue=false;
+    //             } else {
+    //                 alert("账号或密码错误，请重试");
+    //             }
+    //         },
+    //         error : function (data) {
+    //             alert(3);
+    //             console.log(data);
+    //         }
+    //     });
+    //     return false;
+    // }
+</script>
+<!-- Plugin scripts -->
+<script src="/static/vendors/bundle.js"></script>
+
+<!-- App scripts -->
+<script src="/static/assets/js/app.min.js"></script>
+</body>
+</html>

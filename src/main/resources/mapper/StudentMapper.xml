@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.physics.mapper.StudentMapper">
+    <select id="queryByUserName" parameterType="String" resultMap="student_code">
+       select
+--        coursecode.*,
+       student.* from student
+--         join coursecode on student.student_id = coursecode.student_id
+       where student_username = #{user_name}
+   </select>
+    <select id="checkByUserName" parameterType="string" resultType="String">
+        select student_password from student where student.student_username = #{user_name};
+    </select>
+    <update id="updateStudentSelected">
+        update student set student_selected = student_selected + 1,
+              version = version +1 where student_id = #{student_id} and version = #{version}
+    </update>
+    <update id="updateStudentSelectedDel">
+        update student set student_selected = student_selected - 1,
+              version = version +1 where student_id = #{student_id} and version = #{version}
+              and student_selected > 0
+    </update>
+    <resultMap id="student_code" type="com.physics.pojo.Student">
+        <id property="id" column="student_id"/>
+        <result column="student_name" property="name"/>
+        <result column="student_username" property="user_name"/>
+        <result column="student_password" property="pass_word"/>
+        <result column="student_status" property="status" />
+        <result column="student_create_time" property="date"/>
+        <result column="student_collage" property="collage"/>
+        <result column="student_major" property="major"/>
+        <result column="student_number" property="number" />
+        <result column="student_selected" property="selected"/>
+        <result column="student_weekday" property="weekday"/>
+        <result column="student_section" property="week_day_section"/>
+        <!--<collection property="course_Codes" ofType="com.physics.pojo.CourseCode">-->
+            <!--<id column="course_code_id" property="id"/>-->
+            <!--<result column="course_id" property="course_id"/>-->
+            <!--<result column="student_id" property="student_id"/>-->
+            <!--<result column="course_code_time" property="course_code_time"/>-->
+            <!--<result column="course_name" property="course_name"/>-->
+            <!--<result column="course_seat" property="seat"/>-->
+            <!--<result column="course_code_status" property="status"/>-->
+        <!--</collection>-->
+    </resultMap>
+    <select id="getVersion" resultType="int" parameterType="int">
+        select version from student where student_id = #{student_id}
+    </select>
+    <update id="updatePassWord">
+        update student set student_password = #{input_password1} where student_username = #{user_name}
+        and   student_password = #{original_password}
+    </update>
+    <select id="queryUserNameById" parameterType="int" resultType="String">
+        select student_username from student where student_id = #{student_id}
+    </select>
+    <select id="queryNameById" parameterType="int" resultType="String">
+        select student_name from student where student_id = #{student_id}
+    </select>
+</mapper>
